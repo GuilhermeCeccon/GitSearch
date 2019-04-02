@@ -2,14 +2,11 @@
     const url = "https://api.github.com/users";
     const cliente_id = "550bae3de88704b5376f";
     const cliente_secret = "475d069da7f30edd260dd4aa3dd8c22f453fa90d";
-    const count = 7;
-
+    
     async function getUsuario(usuario) {
 
-        const reposResponse = await fetch(`${url}/${usuario}/repos?per_page=${count}&client_id=${cliente_id}&client_secret=${cliente_secret}`);
-        //5 repositorios por pagina ordenados do mais recente
-        //const reposResponse = await fetch(`${url}/${usuario}/repos?client_id=${cliente_id}&client_secret=${cliente_secret}`);
-
+        const reposResponse = await fetch(`${url}/${usuario}/repos?client_id=${cliente_id}&client_secret=${cliente_secret}`);
+        //  https://api.github.com/users/repos
         const starredResponse = await fetch(`${url}/${usuario}/starred?client_id=${cliente_id}&client_secret=${cliente_secret}`);
         // https://api.github.com/users/vuejs/starred{/owner}{/repo}
         const repos = await reposResponse.json(); // await aki pra esperar a conversao
